@@ -1,24 +1,43 @@
-# Neural Network Implementation with GLSL Integration
+# Sparky Game Engine
 
 ## Overview
 
-This project implements a custom neural network from scratch, with a focus on integrating GLSL (OpenGL Shading Language) for enhanced performance. It combines traditional CPU-based neural network computations with GPU-accelerated processing using GLSL shaders.
+The Sparky Game Engine is a custom 2D game engine developed using C++ and OpenGL, designed as part of a YouTube tutorial series. This project focuses on creating a flexible and efficient rendering system that leverages modern graphics programming techniques, particularly through the use of GLSL (OpenGL Shading Language) for shader management.
 
-## Key Features
+## Technical Highlights
 
-- **Custom Neural Network Layers**: Fully connected layers with forward and backward propagation.
-- **Activation Functions**: ReLU, Softmax, and Sigmoid implementations.
-- **Loss Functions**: Categorical Cross-Entropy for multi-class classification.
-- **Optimizers**: SGD, Adam, RMSprop, and Adagrad.
-- **GLSL Integration**: Utilizes GLSL shaders for parallel processing of neural network operations.
+### OpenGL and GLSL Integration
+- **Shader Management**: The engine utilizes vertex and fragment shaders written in GLSL to control the rendering pipeline, allowing for dynamic graphics effects and efficient rendering.
+- **Custom Shaders**: Implemented shaders include basic transformations and color manipulations, providing a foundation for more complex visual effects.
 
-## GLSL Integration Highlights
+### Rendering Pipeline
+- **Vertex Array Objects (VAOs)**: Used to encapsulate vertex buffer configurations, reducing the overhead of state changes during rendering.
+- **Vertex Buffer Objects (VBOs)**: Efficiently manage vertex data in GPU memory, ensuring fast access during rendering.
+- **Batch Rendering**: Implements a `BatchRenderer2D` class that groups multiple draw calls into a single call to minimize CPU overhead and improve performance.
 
-### Vertex Shader Example
+### Math Utilities
+- **Matrix Operations**: A custom mathematics library provides essential operations for matrix transformations, crucial for 2D graphics rendering.
+- **Orthographic Projection**: Utilizes an orthographic projection matrix to maintain consistent scaling across different screen sizes.
 
+### Dynamic Sprite Management
+- **Sprite Creation**: Supports the creation of dynamic sprites with random colors and positions, demonstrating the engine's capability to handle multiple renderable objects efficiently.
+- **Mouse Interaction**: Captures mouse position to create interactive elements within the game environment, allowing for dynamic lighting effects based on user input.
+
+## Core Components
+
+### Main File Breakdown
+The main file serves as the entry point for the engine, initializing the window, shaders, and rendering components. Key sections include:
+
+1. **Window Initialization**: Creates a window using the `Window` class.
+2. **Shader Setup**: Loads and compiles shaders from specified file paths.
+3. **Sprite Generation**: Dynamically generates a grid of colorful sprites to be rendered on the screen.
+4. **Rendering Loop**: Continuously updates the window, processes input, and renders sprites until the window is closed.
+
+### Example Shader Code
+
+#### Vertex Shader (`basic.vert`)
 ```glsl
 #version 330 core
-
 layout (location = 0) in vec4 position;
 uniform mat4 pr_matrix;
 
@@ -28,13 +47,9 @@ void main()
 }
 ```
 
-This vertex shader demonstrates how we transform input vertices using a projection matrix, crucial for rendering our neural network's output or visualizations.
-
-### Fragment Shader Example
-
+#### Fragment Shader (`basic.frag`)
 ```glsl
 #version 330 core
-
 layout (location = 0) out vec4 color;
 uniform vec4 colour;
 
@@ -44,30 +59,26 @@ void main()
 }
 ```
 
-The fragment shader showcases how we can apply colors to our rendered output, which can be used to visualize neural network activations or results.
+These shaders are fundamental for transforming vertex positions and applying colors to rendered objects.
 
-## Performance Optimizations
-
-- **GPU Acceleration**: Leverages GLSL shaders for parallel processing of matrix operations.
-- **Batch Processing**: Implements batch normalization and processing for improved training efficiency.
-- **Optimized Math Operations**: Utilizes GLSL's built-in functions for fast mathematical computations.
-
-## Future Developments
-
-- Implement convolutional layers using GLSL for image processing tasks.
-- Develop custom GLSL shaders for specific neural network architectures.
-- Integrate real-time visualization of neural network training using OpenGL.
+## Future Development Plans
+- **Advanced Rendering Techniques**: Explore additional rendering techniques such as lighting models, shadow mapping, and texture mapping.
+- **Physics Integration**: Incorporate physics simulations for more realistic interactions within the game environment.
+- **Scene Management**: Develop a scene graph system to manage complex scenes with multiple layers and objects efficiently.
 
 ## Getting Started
 
-1. Ensure you have OpenGL and GLSL support on your system.
-2. Clone the repository and navigate to the project directory.
-3. Compile the main file along with the neural network and GLSL shader files.
-4. Run the executable to start training or using the neural network.
+To run this project:
 
-## Requirements
+1. Ensure you have OpenGL development libraries installed on your system.
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/sparky-game-engine.git
+   cd sparky-game-engine
+   ```
+3. Compile the project using your preferred C++ compiler with OpenGL support.
+4. Execute the compiled binary to launch the engine and view the dynamic sprite rendering.
 
-- OpenGL 3.3+
-- GLSL 330+
-- Python 3.x (for CPU-based operations)
-- NumPy, Matplotlib (for data processing and visualization)
+## Acknowledgements
+
+This project is based on a YouTube tutorial series that provides insights into game engine development using C++ and OpenGL. 
