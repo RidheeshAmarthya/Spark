@@ -4,6 +4,10 @@
 
 The Sparky Game Engine is a custom 2D game engine developed using C++ and OpenGL, designed as part of a YouTube tutorial series. This project focuses on creating a flexible and efficient rendering system that leverages modern graphics programming techniques, particularly through the use of GLSL (OpenGL Shading Language) for shader management.
 
+##Screenshots
+                            <img src="https://imgur.com/55k6JS2.png" alt="Spark Screenshot 1">
+                            <img src="https://imgur.com/Q5YqEdv.png" alt="Spark Screenshot 2">
+
 ## Technical Highlights
 
 ### OpenGL and GLSL Integration
